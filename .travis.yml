@@ -1,0 +1,6 @@
+language: ruby
+before_install:
+  - git submodule update --init --recursive
+install:
+  - gem install veewee-to-packer
+script: "for i in veewee/templates/*; do j=$(basename $i); mkdir -p templates/$j; veewee-to-packer -o templates/$j $i/definition.rb; done"
